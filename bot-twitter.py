@@ -1,8 +1,10 @@
 from random import randint
 import tweepy
 from time import sleep
-
+import json
 # Authenticate to Twitter
+with open('config.json', 'r') as arq:
+  chave = json.loads(arq.read())
 
 auth = tweepy.OAuthHandler(chave["consumer_key"], chave["consumer_secret"])
 auth.set_access_token(chave["Token"], chave["Token_Secret"])
