@@ -1,13 +1,7 @@
 from random import randint
 import tweepy
 from time import sleep
-chave = {   "consumer_key": "mt18K8e0wQPbhSNDliTLuLWih",
-            "consumer_secret": "OdzyBRH44wwZuNkapTcU7lCX4WkwEJpzChZpkxlwTMWJWTl0yW",
-            "Bearer-Token": "AAAAAAAAAAAAAAAAAAAAAEggWQEAAAAA4PNrjBlwp1sAQDfNcFmonjPjv4s%3DZFDKKidU2bkDXBjZtfkFtr2HEpEagJb8P1VOEXe1Ay5WviymiY",
-            "Token":"1425656479919525890-IH6IQaFeWn4piQkfIzB8HYtsrCg2wu",
-            "Token_Secret":"nGINsrfrQjxCYLYFn8k0nggvDViiI9hpOB5GSCqBPWFHn",
-            "Bearer": "AAAAAAAAAAAAAAAAAAAAAEggWQEAAAAAzYoQEQdQQtfnCy2C%2BoeRCxv8Mk0%3DUerrxHQTr6tBXi54c9boFjEhld8xw01MuwGFOpPuQU0FNznr55"
-            }
+
 # Authenticate to Twitter
 
 auth = tweepy.OAuthHandler(chave["consumer_key"], chave["consumer_secret"])
