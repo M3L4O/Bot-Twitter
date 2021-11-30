@@ -8,7 +8,8 @@ client = tweepy.Client( consumer_key = getenv('CONSUMER_KEY'),
                         consumer_secret = getenv('CONSUMER_SECRET'),
                         access_token = getenv('TOKEN'),
                         access_token_secret = getenv('TOKEN_SECRET'),
-                        bearer_token = getenv('BEARER_TOKEN')) 
+                        bearer_token = getenv('BEARER_TOKEN'),
+                        wait_on_rate_limit = True) 
 
 #Último tweet por preguiça de escrever em um arquivo
 id_lasted = 1465659201519292416
@@ -20,7 +21,7 @@ def reply_tweet(id_tweet, frase):
 
 #pego o último tweet que tem #MelaoBot
 def last_mention_tweet():
-    return client.search_recent_tweets(query = '#MelaoBot').data[0]['id']
+    return client.search_recent_tweets(query = '#MelaoBot', max_results = 1).data[0]['id']
 
 
 def main(id_lasted):
