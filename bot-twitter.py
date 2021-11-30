@@ -1,29 +1,25 @@
 from random import randint
 import tweepy
 from time import sleep
+from os import getenv
 import json
-# Authenticate to Twitter
-with open('config.json', 'r') as arq:
-  chave = json.loads(arq.read())
 
-auth = tweepy.OAuthHandler(chave["consumer_key"], chave["consumer_secret"])
-auth.set_access_token(chave["Token"], chave["Token_Secret"])
+#Autenticação
+client = tweepy.Client( consumer_key = getenv('CONSUMER_KEY'),
+                        consumer_secret = getenv('CONSUMER_SECRET'),
+                        access_token = getenv('TOKEN'),
+                        access_token_secret = getenv('TOKEN_SECRET'),
+                        bearer_token = getenv('BEARER_TOKEN')) 
 
-client = tweepy.Client( consumer_key = chave["consumer_key"],
-                        consumer_secret = chave["consumer_secret"],
-                        access_token = chave["Token"],
-                        access_token_secret = chave["Token_Secret"],
-                        bearer_token = chave["Bearer"]) 
+#Último tweet por preguiça de escrever em um arquivo
+id_lasted = 1465659201519292416
 
 
-id_lasted = 1465342388960997384
-
-
-
+#Usando o ID do Tweet, o respondo com uma frase aleatória
 def reply_tweet(id_tweet, frase):
    client.create_tweet(text = frase, in_reply_to_tweet_id = id_tweet)
 
-
+#pego o último tweet que tem #MelaoBot
 def last_mention_tweet():
     return client.search_recent_tweets(query = '#MelaoBot').data[0]['id']
 
