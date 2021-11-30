@@ -30,7 +30,6 @@ def main(id_lasted):
         
     while True:
         id_tweet = last_mention_tweet()
-        print(id_tweet)
         if id_lasted == id_tweet:
             sleep(2)
             continue
