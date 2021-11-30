@@ -3,6 +3,7 @@ import tweepy
 from time import sleep
 from os import getenv
 import json
+
 #Autenticação
 client = tweepy.Client( consumer_key = getenv('CONSUMER_KEY'),
                         consumer_secret = getenv('CONSUMER_SECRET'),
@@ -11,9 +12,12 @@ client = tweepy.Client( consumer_key = getenv('CONSUMER_KEY'),
                         bearer_token = getenv('BEARER_TOKEN'),
                         wait_on_rate_limit = True) 
 
+#pego as frases de um arquivo
 frases = []
 with open('frases.txt', 'r') as arq:
     frases = arq.read().split('\n')
+
+    
 #Último tweet por preguiça de escrever em um arquivo
 id_lasted = 1465659201519292416
 
@@ -36,7 +40,7 @@ def main(id_lasted):
             continue
         else:
             id_lasted = id_tweet
-            reply_tweet(id_tweet, frases[randint(0,20)])
+            reply_tweet(id_tweet, frases[randint(0,40)])
             
 
 main(id_lasted, frases)
