@@ -21,7 +21,7 @@ def reply_tweet(id_tweet, frase):
 
 #pego o último tweet que tem #MelaoBot
 def last_mention_tweet():
-    return client.search_recent_tweets(query = '#MelaoBot', max_results = 1).data[0]['id']
+    return client.search_recent_tweets(query = '#MelaoBot', max_results = 10).data[0]['id']
 
 
 def main(id_lasted):
