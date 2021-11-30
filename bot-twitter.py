@@ -2,10 +2,8 @@ from random import randint
 import tweepy
 from time import sleep
 from os import getenv
-import json
 
 #Autenticação
-print(getenv('CONSUMER_KEY'), getenv('CONSUMER_SECRET'), getenv('TOKEN'), getenv('TOKEN_SECRET'), getenv('BEARER_TOKEN'))
 client = tweepy.Client( consumer_key = getenv('CONSUMER_KEY'),
                         consumer_secret = getenv('CONSUMER_SECRET'),
                         access_token = getenv('TOKEN'),
