@@ -2,7 +2,7 @@ from random import randint
 import tweepy
 from time import sleep
 from os import getenv
-
+import json
 #Autenticação
 client = tweepy.Client( consumer_key = getenv('CONSUMER_KEY'),
                         consumer_secret = getenv('CONSUMER_SECRET'),
@@ -11,6 +11,9 @@ client = tweepy.Client( consumer_key = getenv('CONSUMER_KEY'),
                         bearer_token = getenv('BEARER_TOKEN'),
                         wait_on_rate_limit = True) 
 
+frases = []
+with open('frases.txt', 'r') as arq:
+    frases = arq.read().split('\n')
 #Último tweet por preguiça de escrever em um arquivo
 id_lasted = 1465659201519292416
 
@@ -25,9 +28,6 @@ def last_mention_tweet():
 
 
 def main(id_lasted):
-    frases = []
-    with open('frases.txt', 'r') as arq:
-        frases = arq.read().split('\n')
         
     while True:
         id_tweet = last_mention_tweet()
@@ -39,4 +39,4 @@ def main(id_lasted):
             reply_tweet(id_tweet, frases[randint(0,20)])
             
 
-main(id_lasted)
+main(id_lasted, frases)
