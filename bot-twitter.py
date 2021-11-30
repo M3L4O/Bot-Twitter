@@ -5,6 +5,7 @@ from os import getenv
 import json
 
 #Autenticação
+print(getenv('CONSUMER_KEY'))
 client = tweepy.Client( consumer_key = getenv('CONSUMER_KEY'),
                         consumer_secret = getenv('CONSUMER_SECRET'),
                         access_token = getenv('TOKEN'),
