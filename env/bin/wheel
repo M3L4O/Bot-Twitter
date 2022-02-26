@@ -1,4 +1,4 @@
-#!/home/melao/Documentos/Codes/Bot-Twitter/env/bin/python
+#!/home/melao/Codes/Twitter-Bot/env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

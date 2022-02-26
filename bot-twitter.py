@@ -1,8 +1,8 @@
 from random import randint
-import tweepy
 from time import sleep
 from os import getenv
 import json
+import tweepy
 
 #Autenticação
 client = tweepy.Client( consumer_key = getenv('CONSUMER_KEY'),
@@ -12,35 +12,37 @@ client = tweepy.Client( consumer_key = getenv('CONSUMER_KEY'),
                         bearer_token = getenv('BEARER_TOKEN'),
                         wait_on_rate_limit = True) 
 
-#pego as frases de um arquivo
+
 frases = []
 with open('frases.txt', 'r') as arq:
     frases = arq.read().split('\n')
 
     
-#Último tweet por preguiça de escrever em um arquivo
-id_lasted = 1465659201519292416
+
+id_lasted = 1497548424572551171
 
 
-#Usando o ID do Tweet, o respondo com uma frase aleatória
+
 def reply_tweet(id_tweet, frase):
-   client.create_tweet(text = frase, in_reply_to_tweet_id = id_tweet)
+    print(f'Mandei {frase}.')
+    client.create_tweet(text = frase, in_reply_to_tweet_id = id_tweet)
 
-#pego o último tweet que tem #MelaoBot
+
 def last_mention_tweet():
-    return client.search_recent_tweets(query = '#MelaoBot', max_results = 10).data[0]['id']
+    return client.get_users_tweets(id = "1159522564647129088", max_results = 5).data[0]['id']
 
 
 def main(id_lasted, frases):
         
     while True:
         id_tweet = last_mention_tweet()
-        if id_lasted == id_tweet:
-            sleep(2)
-            continue
-        else:
+        print(id_lasted)
+        if id_lasted != id_tweet:
             id_lasted = id_tweet
-            reply_tweet(id_tweet, frases[randint(0,40)])
+            reply_tweet(id_tweet, frases[randint(0,4)])
+        else:
+            sleep(10)
+            
             
 
 main(id_lasted, frases)
