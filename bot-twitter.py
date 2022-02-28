@@ -29,7 +29,7 @@ def reply_tweet(id_tweet, frase):
 
 
 def last_mention_tweet():
-    return client.get_users_tweets(id = "1159522564647129088", max_results = 5).data[0]['id']
+    return client.get_users_tweets(id = "1275133263867260928", max_results = 5).data[0]['id']
 
 
 def main(id_lasted, frases):
@@ -39,7 +39,7 @@ def main(id_lasted, frases):
         print(id_lasted)
         if id_lasted != id_tweet:
             id_lasted = id_tweet
-            reply_tweet(id_tweet, frases[randint(0,4)])
+            reply_tweet(id_tweet, frases[randint(0,9)])
         else:
             sleep(10)
             
